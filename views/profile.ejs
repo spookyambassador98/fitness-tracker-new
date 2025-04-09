@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="/public/css/profile.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Quick Features</h2>
+            <ul>
+                <li><a href="/feature1">Feature 1</a></li>
+                <li><a href="#">Feature 2</a></li>
+                <li><a href="#">Feature 3</a></li>
+                <li><a href="#">Feature 4</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <header class="header">
+                <h1 class="greeting">Hello, <%= user.username %>!</h1>
+                <div class="header-buttons">
+                    <form id="report-form" action="/report" method="GET">
+                        <button type="submit" class="report-button">Report Change</button>
+                    </form>
+                    <form id="logout-form" action="/api/logout" method="POST">
+                        <button type="submit" class="logout-button">Log Out</button>
+                    </form>
+                </div>
+            </header>
+            <section class="profile-info">
+                <h2>Current Metrics:</h2>
+                <p><strong>Current Weight:</strong> <%= user.Current_weight %></p>
+                <p><strong>Desired Weight:</strong> <%= user.Desired_weight %></p>
+                <p><strong>Height:</strong> <%= user.Height %></p>
+                <p><strong>Activity_Level:</strong> <%= user.Activity_Level %></p>
+                <p><strong>Age:</strong> <%= user.Age %></p>
+                <p><strong>Gender:</strong> <%= user.Gender %></p>
+            </section>
+            <form id="report-form" action="/report" method="GET">
+                <button type="submit" class="report-button">Report Change</button>
+            </form>
+        </main>
+    </div>
+</body>
+</html>

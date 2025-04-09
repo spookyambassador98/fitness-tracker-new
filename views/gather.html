@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Step Form</title>
+    <link rel="stylesheet" href="/public/css/gather.css">
+</head>
+<body>
+    <div class="form-container">
+        <form id="multiStepForm" action="/api/gather" method="POST">
+            <!-- Step 1 -->
+            <div class="form-step active" id="step1">
+                <div class="step-header">
+                    <h2>Step 1: Questions 1-5</h2>
+                </div>
+                <div class="form-group">
+                    <label for="Current_weight">Current Weight:</label>
+                    <input type="text" id="Current_weight" name="Current_weight" required>
+                </div>
+                <div class="form-group">
+                    <label for="Desired_weight">Desired Weight:</label>
+                    <input type="text" id="Desired_weight" name="Desired_weight" required>
+                </div>
+                <div class="form-group">
+                    <label for="Height">Height <small></label>
+                    <input type="text" id="Height" name="Height" required>
+                </div>
+                <div class="form-group">
+                    <label for="Body_Fat_Percentage">Body Fat Percentage:</label>
+                    <input type="text" id="Body_Fat_Percentage" name="Body_Fat_Percentage" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="Activity_Level">Activity Level:</label>
+                    <select id="Activity_Level" name="Activity_Level" required>
+                        <option value="">Select your activity level</option>
+                        <option value="1.2">Sedentary (little to no exercise)</option>
+                        <option value="1.375">Lightly active (light exercise/sports 1-3 days/week)</option>
+                        <option value="1.55">Moderately active (moderate exercise/sports 3-5 days/week)</option>
+                        <option value="1.725">Very active (hard exercise/sports 6-7 days/week)</option>
+                        <option value="1.9">Extra active (very hard exercise/physical job)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Age">Age:</label>
+                    <input type="number" id="Age" name="Age" required>
+                </div>
+                <div class="form-group">
+                    <label for="Gender">Gender:</label>
+                    <select id="Gender" name="Gender" required>
+                        <option value="">Select your gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Goal">Fitness Goal:</label>
+                    <select id="Goal" name="Goal" required>
+                        <option value="">Select your goal</option>
+                        <option value="weight_loss">Weight Loss</option>
+                        <option value="weight_gain">Weight Gain</option>
+                        <option value="maintain">Maintain Weight</option>
+                        <option value="improve_fitness">Improve Fitness</option>
+                    </select>
+                </div>
+                <div class="button-group">
+                    <button type="button" class="btn" onclick="prevStep(2)">Previous</button>
+                    <button type="submit" class="btn btn-submit">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function nextStep(step) {
+            const currentStep = document.querySelector('.form-step.active');
+            const nextStep = document.getElementById(`step${step}`);
+
+            currentStep.classList.add('fade-out');
+            setTimeout(() => {
+                currentStep.classList.remove('active', 'fade-out');
+                nextStep.classList.add('active', 'fade-in');
+                setTimeout(() => nextStep.classList.remove('fade-in'), 500);
+            }, 500);
+        }
+
+        function prevStep(step) {
+            const currentStep = document.querySelector('.form-step.active');
+            const prevStep = document.getElementById(`step${step}`);
+
+            currentStep.classList.add('fade-out');
+            setTimeout(() => {
+                currentStep.classList.remove('active', 'fade-out');
+                prevStep.classList.add('active', 'fade-in');
+                setTimeout(() => prevStep.classList.remove('fade-in'), 500);
+            }, 500);
+        }
+    </script>
+</body>
+</html>

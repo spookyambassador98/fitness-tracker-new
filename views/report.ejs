@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Step Form</title>
+    <link rel="stylesheet" href="/public/css/gather.css">
+</head>
+<body>
+    <div class="form-container">
+        <!-- The action URL could be dynamic if needed -->
+        <form id="multiStepForm" action="/api/gather" method="POST"> 
+            <!-- Step 1 -->
+            <div class="form-step active" id="step1">
+                <div class="step-header">
+                    <h2>Step 1: Questions 1-5</h2>
+                </div>
+                <div class="form-group">
+                    <label for="Current_weight">Current Weight:</label>
+                    <!-- Add dynamic default values if needed using EJS syntax -->
+                    <input type="text" id="Current_weight" name="Current_weight"  required>
+                </div>
+                <div class="form-group">
+                    <label for="Desired_weight">Desired Weight:</label>
+                    <input type="text" id="Desired_weight" name="Desired_weight"  required>
+                </div>
+                <div class="form-group">
+                    <label for="Height">Height:</label>
+                    <input type="text" id="Height" name="Height"  required>
+                </div>
+                <div class="form-group">
+                    <label for="BMI">BMI <small>(Body Mass Index)</small>:</label>
+                    <input type="text" id="BMI" name="BMI"  required>
+                </div>
+                <div class="form-group">
+                    <label for="Body_Fat_Percentage">Body Fat Percentage:</label>
+                    <input type="text" id="Body_Fat_Percentage" name="Body_Fat_Percentage"  required>
+                </div>
+                <div class="button-group">
+                    <button type="button" class="btn" onclick="nextStep(2)">Next</button>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="form-step" id="step2">
+                <div class="step-header">
+                    <h2>Step 2: Questions 6-10</h2>
+                </div>
+                <div class="form-group">
+                    <label for="BMR">BMR <small>(Basal Metabolic Rate)</small>:</label>
+                    <input type="text" id="BMR" name="BMR" required>
+                </div>
+                <div class="form-group">
+                    <label for="RHR">RHR <small>(Resting Heart Rate)</small>:</label>
+                    <input type="text" id="RHR" name="RHR" required>
+                </div>
+                <div class="form-group">
+                    <label for="MHR">MHR <small>(Maximum Heart Rate)</small>:</label>
+                    <input type="text" id="MHR" name="MHR"  required>
+                </div>
+                <div class="form-group">
+                    <label for="LBM">LBM <small>(Lean Body Mass)</small>:</label>
+                    <input type="text" id="LBM" name="LBM"   required>
+                </div>
+                <div class="form-group">
+                    <label for="WHR">WHR <small>(Waist-to-Hip Ratio)</small>:</label>
+                    <input type="text" id="WHR" name="WHR"   required>
+                </div>
+                <div class="form-group">
+                    <label for="VO2_Max">VO2 Max <small>(Maximal Oxygen Uptake)</small>:</label>
+                    <input type="text" id="VO2_Max" name="VO2_Max"   required>
+                </div>
+                <div class="form-group">
+                    <label for="Blood_Pressure">Blood Pressure:</label>
+                    <input type="text" id="Blood_Pressure" name="Blood_Pressure"  required>
+                </div>
+                <div class="form-group"> label for="Hydration_Level">Hydration Level:</label>
+                    <input type="text" id="Hydration_Level" name="Hydration_Level"  required>
+                </div>
+                <div class="button-group">
+                    <button type="button" class="btn" onclick="prevStep(1)">Previous</button>
+                    <button type="submit" class="btn btn-submit">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function nextStep(step) {
+            const currentStep = document.querySelector('.form-step.active');
+            const nextStep = document.getElementById(`step${step}`);
+
+            currentStep.classList.add('fade-out');
+            setTimeout(() => {
+                currentStep.classList.remove('active', 'fade-out');
+                nextStep.classList.add('active', 'fade-in');
+                setTimeout(() => nextStep.classList.remove('fade-in'), 500); // Remove fade-in after animation
+            }, 500); // Duration of the fade-out animation
+        }
+
+        function prevStep(step) {
+            const currentStep = document.querySelector('.form-step.active');
+            const prevStep = document.getElementById(`step${step}`);
+
+            currentStep.classList.add('fade-out');
+            setTimeout(() => {
+                currentStep.classList.remove('active', 'fade-out');
+                prevStep.classList.add('active', 'fade-in');
+                setTimeout(() => prevStep.classList.remove('fade-in'), 500); // Remove fade-in after animation
+            }, 500); // Duration of the fade-out animation
+        }
+    </script>
+</body>
+</html>

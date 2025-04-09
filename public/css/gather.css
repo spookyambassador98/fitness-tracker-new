@@ -1,0 +1,88 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.form-container {
+    background: #ffffff;
+    border-radius: 1em;
+    box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 37.5em; /* 600px equivalent in em */
+    padding: 1.25em; /* 20px equivalent in em */
+    box-sizing: border-box;
+}
+
+.step-header {
+    text-align: center;
+    margin-bottom: 1.25em; /* 20px equivalent in em */
+}
+
+.step-header h2 {
+    font-size: 1.5em;
+    color: #007bff;
+    margin: 0;
+}
+
+.form-group {
+    margin-bottom: 1.25em; /* 20px equivalent in em */
+}
+
+label {
+    display: block;
+    margin-bottom: 0.3125em; /* 5px equivalent in em */
+    color: #555;
+    font-weight: 600;
+}
+
+input[type="text"], input[type="number"], select {
+    width: 100%;
+    padding: 0.75em; /* 12px equivalent in em */
+    border: 1px solid #ddd;
+    border-radius: 0.3125em; /* 5px equivalent in em */
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.625em 1.25em; /* 10px 20px equivalent in em */
+    border-radius: 0.3125em; /* 5px equivalent in em */
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.btn-submit {
+    background-color: #28a745;
+}
+
+.btn-submit:hover {
+    background-color: #218838;
+}
+
+.form-step {
+    display: none;
+}
+
+.form-step.active {
+    display: block;
+}
